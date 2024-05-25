@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+// options for java
+option java_multiple_files = true;
+option java_package = "com.curlinfinity.grpcserver.proto";
+
+// options for golang
+option go_package = "./proto";
+
+package greet_service;
+
+service GreetService {
+    rpc SayHello(NoParam) returns (HelloResponse);
+    rpc SayHelloClientStreaming(stream HelloRequest) returns (MessageList);
+    rpc SayHelloServerStreaming(NameList) returns (stream HelloRequest);
+    rpc SayHelloBidirectionalStreaming(stream HelloRequest) returns (stream HelloResponse);
+}
+
+message NoParam {}
+
+message HelloResponse {
+    string message = 1;
+}
+
+message HelloRequest {
+    string name = 1;
+}
+
+message MessageList {
+    repeated string messages = 1;   
+}
+
+message NameList {
+    repeated string names = 1;
+}
