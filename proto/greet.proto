@@ -12,7 +12,7 @@ package greet_service;
 service GreetService {
     rpc SayHello(NoParam) returns (HelloResponse);
     rpc SayHelloClientStreaming(stream HelloRequest) returns (MessageList);
-    rpc SayHelloServerStreaming(NameList) returns (stream HelloRequest);
+    rpc SayHelloServerStreaming(NameList) returns (stream HelloResponse);
     rpc SayHelloBidirectionalStreaming(stream HelloRequest) returns (stream HelloResponse);
 }
 
